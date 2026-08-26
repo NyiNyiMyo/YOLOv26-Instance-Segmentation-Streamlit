@@ -182,23 +182,23 @@ available_examples = [
     if __import__("os").path.exists(file)
 ]
 selected_example = None
-if available_examples:
-    st.markdown(
-        '<div class="section-title">🖼️ Try an Example</div>',
-        unsafe_allow_html=True,
-    )
-    example_cols = st.columns(len(available_examples))
-    for i, example in enumerate(available_examples):
-        with example_cols[i]:
-            st.image(
-                example,
-                use_container_width=True,
-            )
-            if st.button(
-                f"Use Example {i + 1}",
-                key=f"example_{i}",
-            ):
-                selected_example = example
+# if available_examples:
+#     st.markdown(
+#         '<div class="section-title">🖼️ Try an Example</div>',
+#         unsafe_allow_html=True,
+#     )
+#     example_cols = st.columns(len(available_examples))
+#     for i, example in enumerate(available_examples):
+#         with example_cols[i]:
+#             st.image(
+#                 example,
+#                 use_container_width=True,
+#             )
+#             if st.button(
+#                 f"Use Example {i + 1}",
+#                 key=f"example_{i}",
+#             ):
+#                 selected_example = example
 
 import base64
 

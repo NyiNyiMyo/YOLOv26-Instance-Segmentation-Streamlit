@@ -34,7 +34,7 @@ st.markdown(
     }
     .subtitle {
         font-size: 1.0rem;
-        font-weight: 300;
+        font-weight: 500;
         color: #8b949e;
         margin-bottom: 1.0rem;
     }
@@ -153,53 +153,6 @@ st.markdown(
     "</div>",
     unsafe_allow_html=True,
 )
-
-# ============================================================
-# Model Summary Cards
-# ============================================================
-card1, card2, card3, card4 = st.columns(4)
-
-with card1:
-    st.markdown(
-        """
-        <div class="info-card">
-            <div class="info-value">YOLOv26</div>
-            <div class="info-label">Model</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-with card2:
-    st.markdown(
-        """
-        <div class="info-card">
-            <div class="info-value">SIS</div>
-            <div class="info-label">Dataset</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-with card3:
-    st.markdown(
-        """
-        <div class="info-card">
-            <div class="info-value">6</div>
-            <div class="info-label">Classes</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-with card4:
-    st.markdown(
-        """
-        <div class="info-card">
-            <div class="info-value">Instance</div>
-            <div class="info-label">Segmentation</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-st.write("")
 
 # ============================================================
 # Image Input
@@ -371,6 +324,53 @@ else:
         "Upload an image or select one of the example images "
         "above to run YOLOv26 instance segmentation."
     )
+
+# ============================================================
+# Model Summary Cards
+# ============================================================
+card1, card2, card3, card4 = st.columns(4)
+
+with card1:
+    st.markdown(
+        """
+        <div class="info-card">
+            <div class="info-value">YOLOv26</div>
+            <div class="info-label">Model</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+with card2:
+    st.markdown(
+        """
+        <div class="info-card">
+            <div class="info-value">SIS</div>
+            <div class="info-label">Dataset</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+with card3:
+    st.markdown(
+        """
+        <div class="info-card">
+            <div class="info-value">6</div>
+            <div class="info-label">Classes</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+with card4:
+    st.markdown(
+        """
+        <div class="info-card">
+            <div class="info-value">Instance</div>
+            <div class="info-label">Segmentation</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+st.write("")
 
 # ============================================================
 # Footer

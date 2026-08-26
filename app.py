@@ -64,7 +64,7 @@ st.markdown(
     }
     /* Example buttons */
     div.stButton > button {
-        font-size: 0.85rem;
+        font-size: 0.65rem;
         width: 100%;
         border-radius: 8px;
     }
@@ -197,6 +197,36 @@ if available_examples:
             if st.button(
                 f"Use Example {i + 1}",
                 key=f"example_{i}",
+            ):
+                selected_example = example
+
+import base64
+
+if available_examples:
+    st.markdown(
+        '<div class="section-title">🖼️ Try an Example</div>',
+        unsafe_allow_html=True,
+    )    
+    # Force 6 smaller columns to significantly reduce image height
+    MAX_COLS = 6
+    example_cols = st.columns(MAX_COLS)
+    
+    for i, example in enumerate(available_examples):
+        col_idx = i % MAX_COLS 
+        with example_cols[col_idx]:
+            with open(example, "rb") as image_file:
+                encoded_string = base64.b64encode(image_file.read()).decode()
+            st.markdown(
+                f"""
+                <img src="data:image/jpeg;base64,{encoded_string}" 
+                     style="width:100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; box-shadow: 0px 2px 5px rgba(0,0,0,0.1); cursor: pointer;">
+                """,
+                unsafe_allow_html=True,
+            )
+            if st.button(
+                "Select",
+                key=f"example_{i}",
+                use_container_width=True,
             ):
                 selected_example = example
 

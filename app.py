@@ -203,34 +203,55 @@ selected_example = None
 import base64
 
 if available_examples:
-    st.markdown(
-        '<div class="section-title">🖼️ Try an Example</div>',
-        unsafe_allow_html=True,
-    )    
-    # Force 6 smaller columns to significantly reduce image height
-    MAX_COLS = 6
-    example_cols = st.columns(MAX_COLS)
+    st.markdown('<div class="section-title">🖼️ Try an Example</div>', unsafe_allow_html=True)
+    
+    # 6 columns makes the height very small
+    example_cols = st.columns(6)
     
     for i, example in enumerate(available_examples):
-        col_idx = i % MAX_COLS 
+        col_idx = i % 6
+        
         with example_cols[col_idx]:
-            with open(example, "rb") as image_file:
-                encoded_string = base64.b64encode(image_file.read()).decode()
+            # Read and encode image
+            with open(example, "rb") as f:
+                img_base64 = base64.b64encode(f.read()).decode()
+            
+            # Use a container div with relative positioning
             st.markdown(
                 f"""
-                <img src="data:image/jpeg;base64,{encoded_string}" 
-                     onclick="document.getElementById('hidden_btn_{i}').click();"
-                     style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px; cursor:pointer; transition: transform 0.2s;"
-                     onmouseover="this.style.transform='scale(1.03)'"
-                     onmouseout="this.style.transform='scale(1)'">
-                """,
-                unsafe_allow_html=True,
+                <div style="position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 8px; overflow: hidden; background-image: url('data:image/jpeg;base64,{img_base64}'); background-size: cover; background-position: center;">
+                """, 
+                unsafe_allow_html=True
             )
             
-            st.markdown(f'<div id="hidden_btn_{i}" style="display:none;">', unsafe_allow_html=True)
-            if st.button("HideMe", key=f"example_{i}"):
+            # Inject a CSS style block scoped specifically to this button's unique container
+            # This makes the button completely invisible but fills the entire image square
+            st.markdown(
+                """
+                <style>
+                div[data-testid="stVerticalBlock"] > div:has(button) {
+                    position: absolute !important;
+                    top: 0 !important;
+                    left: 0 !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                    opacity: 0 !important;
+                    cursor: pointer !important;
+                }
+                button {
+                    width: 100% !important;
+                    height: 100% !important;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            # The button sits inside the container, invisible, taking up no extra vertical space
+            if st.button("Select", key=f"btn_{i}"):
                 selected_example = example
-            st.markdown('</div>', unsafe_allow_html=True)
+                
+            st.markdown("</div>", unsafe_allow_html=True)
 
 # ============================================================
 # Determine Input Image

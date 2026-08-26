@@ -64,7 +64,6 @@ st.markdown(
     }
     /* Example buttons */
     div.stButton > button {
-        font-size: 0.35rem;
         width: 100%;
         border-radius: 8px;
     }
@@ -195,7 +194,7 @@ if available_examples:
                 use_container_width=True,
             )
             if st.button(
-                f"Use Example {i + 1}",
+                "Select", # f"Use Example {i + 1}",
                 key=f"example_{i}",
             ):
                 selected_example = example

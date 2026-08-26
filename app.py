@@ -219,16 +219,18 @@ if available_examples:
             st.markdown(
                 f"""
                 <img src="data:image/jpeg;base64,{encoded_string}" 
-                     style="width:100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; box-shadow: 0px 2px 5px rgba(0,0,0,0.1); cursor: pointer;">
+                     onclick="document.getElementById('hidden_btn_{i}').click();"
+                     style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px; cursor:pointer; transition: transform 0.2s;"
+                     onmouseover="this.style.transform='scale(1.03)'"
+                     onmouseout="this.style.transform='scale(1)'">
                 """,
                 unsafe_allow_html=True,
             )
-            if st.button(
-                "Select",
-                key=f"example_{i}",
-                use_container_width=True,
-            ):
+            
+            st.markdown(f'<div id="hidden_btn_{i}" style="display:none;">', unsafe_allow_html=True)
+            if st.button("HideMe", key=f"example_{i}"):
                 selected_example = example
+            st.markdown('</div>', unsafe_allow_html=True)
 
 # ============================================================
 # Determine Input Image

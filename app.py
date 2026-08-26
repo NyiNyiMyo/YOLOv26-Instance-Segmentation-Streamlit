@@ -31,6 +31,7 @@ st.markdown(
         font-size: 1.6rem;
         font-weight: 600;
         color: #28C1C9;
+        margin-top: 0.5rem;
         margin-bottom: 0.2rem;
     }
     .subtitle {

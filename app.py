@@ -28,20 +28,21 @@ st.markdown(
     }
     /* Main title */
     .main-title {
-        font-size: 2.6rem;
-        font-weight: 700;
+        font-size: 2.0rem;
+        font-weight: 600;
         margin-bottom: 0.2rem;
     }
     .subtitle {
-        font-size: 1.15rem;
+        font-size: 1.0rem;
+        font-weight: 300;
         color: #8b949e;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.0rem;
     }
     /* Section headings */
     .section-title {
-        font-size: 1.35rem;
-        font-weight: 650;
-        margin-top: 1.2rem;
+        font-size: 1.0rem;
+        font-weight: 500;
+        margin-top: 1.0rem;
         margin-bottom: 0.8rem;
     }
     /* Info cards */
@@ -116,11 +117,7 @@ with st.sidebar:
         </div>
         <div class="sidebar-item">
             <div class="sidebar-label">Dataset</div>
-            <div class="sidebar-value">SIS</div>
-        </div>
-        <div class="sidebar-item">
-            <div class="sidebar-label">Application</div>
-            <div class="sidebar-value">Laparoscopic Surgical Instruments</div>
+            <div class="sidebar-value">Surgical Instruments</div>
         </div>
         <div class="sidebar-item">
             <div class="sidebar-label">Framework</div>
@@ -137,9 +134,6 @@ with st.sidebar:
         max_value=0.95,
         value=0.25,
         step=0.05,
-    )
-    st.caption(
-        "Only predictions above this confidence threshold are displayed."
     )
     st.divider()
     st.caption(
@@ -190,7 +184,7 @@ with card3:
         """
         <div class="info-card">
             <div class="info-value">6</div>
-            <div class="info-label">Instrument Classes</div>
+            <div class="info-label">Classes</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -383,5 +377,5 @@ else:
 # ============================================================
 st.divider()
 st.caption(
-    "YOLOv26 • Instance Segmentation • SIS Surgical Instruments"
+    "YOLOv26 • Instance Segmentation • Surgical Instruments"
 )

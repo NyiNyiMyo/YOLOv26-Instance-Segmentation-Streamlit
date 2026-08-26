@@ -28,8 +28,9 @@ st.markdown(
     }
     /* Main title */
     .main-title {
-        font-size: 2.0rem;
+        font-size: 1.7rem;
         font-weight: 600;
+        color: #28C1C9;
         margin-bottom: 0.2rem;
     }
     .subtitle {
@@ -331,8 +332,8 @@ if input_image is not None:
         st.info(class_text)
 else:
     st.info(
-        "Upload an image or select one of the example images "
-        "above to run YOLOv26 instance segmentation."
+        "Upload an image or select one of the example images."
+        # "above to run YOLOv26 instance segmentation."
     )
 
 # ============================================================

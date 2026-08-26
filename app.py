@@ -42,8 +42,8 @@ st.markdown(
     .section-title {
         font-size: 1.0rem;
         font-weight: 500;
-        margin-top: 1.0rem;
-        margin-bottom: 0.8rem;
+        margin-top: 0.7rem;
+        margin-bottom: 0.7rem;
     }
     /* Info cards */
     .info-card {
@@ -64,6 +64,7 @@ st.markdown(
     }
     /* Example buttons */
     div.stButton > button {
+        font-size: 0.85rem;
         width: 100%;
         border-radius: 8px;
     }
@@ -214,7 +215,7 @@ elif selected_example is not None:
 if input_image is not None:
     st.divider()
     st.markdown(
-        '<div class="section-title">🎯 Segmentation Result</div>',
+        '<div class="section-title">🎯 Segmentation Results</div>',
         unsafe_allow_html=True,
     )
     with st.spinner("Running YOLOv26 inference..."):
@@ -286,6 +287,16 @@ if input_image is not None:
         average_confidence = 0.0
         unique_classes = []
 
+    st.markdown(
+    """
+    <style>
+    div[data-testid="stMetricValue"] {
+        font-size: 24px !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
     stat1, stat2, stat3, stat4 = st.columns(4)
 
     with stat1:
